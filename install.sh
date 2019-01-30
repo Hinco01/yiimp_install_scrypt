@@ -577,7 +577,7 @@ exec bash
         }
         listen 80;
         listen [::]:80;
-        server_name '"${server_name}"' www.'"${server_name}"';
+        server_name '"${server_name}"';
         root "/var/www/'"${server_name}"'/html/web";
         index index.html index.htm index.php;
         charset utf-8;
@@ -659,7 +659,7 @@ exec bash
     sleep 3
     
     sudo aptitude -y install letsencrypt
-    sudo letsencrypt certonly -a webroot --webroot-path=/var/web --email "$EMAIL" --agree-tos -d "$server_name" -d www."$server_name"
+    sudo letsencrypt certonly -a webroot --webroot-path=/var/web --email "$EMAIL" --agree-tos -d "$server_name"
     sudo rm /etc/nginx/sites-available/$server_name.conf
     sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
     # I am SSL Man!
@@ -687,7 +687,7 @@ exec bash
         }
             listen 443 ssl http2;
             listen [::]:443 ssl http2;
-            server_name '"${server_name}"' www.'"${server_name}"';
+            server_name '"${server_name}"';
         
             root /var/www/'"${server_name}"'/html/web;
             index index.php;
